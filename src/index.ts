@@ -1,5 +1,3 @@
-function some() {
-    alert('i work')
-}
+import { app } from "app";
 
-some();
+app.mount("#app")

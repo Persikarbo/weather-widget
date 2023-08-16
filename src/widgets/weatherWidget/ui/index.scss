@@ -1,0 +1,9 @@
+.weatherWidget {
+  --weatherWidgetPadding: 3rem;
+
+  width: fit-content;
+  border-radius: 1rem;
+  background-color: var(--colorMineShaft);
+  color: var(--colorWhite);
+  padding: var(--weatherWidgetPadding);
+}

@@ -1,0 +1,13 @@
+.block {
+  display: flex;
+  flex-direction: column;
+
+  &--isFullHeight {
+    height: 100%;
+  }
+
+  &--isContentCentered {
+    justify-content: center;
+    align-items: center;
+  }
+}

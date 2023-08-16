@@ -6,9 +6,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = function buildLoaders({ isDev, paths }: BuildOptions): RuleSetRule[] {
 
     const cssLoader = {
-        test: /\.(s)css$/i,
+        test: /\.s?css$/i,
         use: [
-            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            isDev ? "vue-style-loader" : MiniCssExtractPlugin.loader,
             "css-loader",
             "sass-loader"
         ],
