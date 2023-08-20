@@ -1,13 +1,19 @@
-.block {
+.icon {
+  --iconSize: 3rem;
+  --iconColor: currentColor;
+
   display: flex;
-  flex-direction: column;
-
-  &--isFullHeight {
-  height: 100%;
-  }
-
-  &--isContentCentered {
   justify-content: center;
   align-items: center;
+  width: var(--iconSize);
+  height: var(--iconSize);
+  color: var(--iconColor);
+
+  &.sizeM {
+    --iconSize: 4rem;
+  }
+
+  &.sizeL {
+    --iconSize: 5rem;
   }
 }

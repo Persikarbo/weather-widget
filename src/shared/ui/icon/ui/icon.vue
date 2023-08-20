@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { classNames, type Mods } from "shared/lib";
 import type { FunctionalComponent, SVGAttributes } from "vue";
-
-enum IconSize {
-  default = "",
-  M = "sizeM",
-  L = "sizeL"
-}
+import { IconSize } from "../config";
 
 interface IconProps extends FunctionalComponent<SVGAttributes> {
   id: string,
@@ -15,13 +10,23 @@ interface IconProps extends FunctionalComponent<SVGAttributes> {
 }
 
 const props = withDefaults(defineProps<IconProps>(), {
-  size: IconSize.default
+  size: IconSize.S
 });
+
+const getIconUrl = (id: string): string | undefined => {
+  try {
+    const { default: { url = "" } = {} } = require(`@assets/icons/${id}.svg`);
+    return url;
+  } catch {
+    console.error(`Icon with identifier ${id} not found.`)
+  }
+}
+
 </script>
 
 <template>
-  <svg :class="classNames('block', extraClasses, [ size ])">
-    <use :href="`sprite.svg#${id}`" />
+  <svg :class="classNames('icon', extraClasses, [ size ])">
+    <use :href="getIconUrl(props.id)" />
   </svg>
 </template>
 

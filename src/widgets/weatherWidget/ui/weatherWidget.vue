@@ -4,6 +4,9 @@ import { computed, onMounted, ref } from "vue";
 import { type OpenWeatherData, defaultState } from "../config";
 import { getWeatherConcatenatedData } from "widgets/weatherWidget/lib";
 import { Icon } from "shared/ui";
+import Header from "./header.vue";
+import { capitalizeFirstLetter } from "shared/lib";
+import Details from "widgets/weatherWidget/ui/details.vue";
 
 const weatherData = ref<OpenWeatherData>(defaultState);
 
@@ -16,19 +19,29 @@ onMounted(() => {
 
 const descriptions = computed(() => getWeatherConcatenatedData(weatherData.value, "description"));
 const mainIcon = computed(() => weatherData.value.weather[0]?.icon);
+const detailsItems = computed(() => [
+  {
+    icon: "icon-direction",
+    value: weatherData.value.wind.speed,
+    unit: "m/s"
+  },
+  {
+    icon: "icon-humidity",
+    value: weatherData.value.main.humidity,
+    unit: "%"
+  },
+  {
+    desc: "Atmospheric pressure: ",
+    value: weatherData.value.main.pressure,
+    unit: "hPa"
+  }
+])
 
 </script>
 
 <template>
   <div class="weatherWidget">
-    <div class="weatherWidget__header">
-      <div class="weatherWidget__location">
-        {{ weatherData.name && weatherData.sys.country
-            ? `${weatherData.name}, ${weatherData.sys.country}`
-            : "Location not found" }}
-      </div>
-      <div class="weatherWidget__settings">settings icon</div>
-    </div>
+    <Header :city="weatherData.name" :country="weatherData.sys?.country" />
     <div class="weatherWidget__main">
       <div class="weatherWidget__icon">
         <Icon :id="mainIcon"/>
@@ -39,20 +52,9 @@ const mainIcon = computed(() => weatherData.value.weather[0]?.icon);
     </div>
     <div class="weatherWidget__description">
       {{ weatherData.main.feels_like ? `Feels like ${weatherData.main.feels_like} °C.` : "" }}
-      {{ descriptions }}
+      {{ descriptions && `${capitalizeFirstLetter(descriptions)}.` }}
     </div>
-    <div class="weatherWidget__details">
-      <dl>
-        <template v-if="weatherData.wind.speed">
-          <dt>wind direction icon</dt>
-          <dd>{{ `${weatherData.wind.speed}m/s` }}</dd>
-        </template>
-        <template v-if="weatherData.main.pressure">
-          <dt>pressure icon</dt>
-          <dd>{{ `${weatherData.main.pressure}hPa` }}</dd>
-        </template>
-      </dl>
-    </div>
+    <Details :items="detailsItems"/>
   </div>
 </template>
 

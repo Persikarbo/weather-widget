@@ -6,12 +6,20 @@
   background-color: var(--colorMineShaft);
   color: var(--colorWhite);
   padding: var(--weatherWidgetPadding);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   &__header {
     display: flex;
+    justify-content: space-between;
   }
 
   &__main {
+    display: flex;
+  }
+
+  &__details {
     display: flex;
   }
 }
