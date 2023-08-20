@@ -9,16 +9,16 @@ const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = function buildPlugins({ paths }: BuildOptions): WebpackPluginInstance[] {
 
-    return [
-        new HtmlWebpackPlugin({
-            template: paths.html
-        }),
-        new VueLoaderPlugin(),
-        new MiniCssExtractPlugin({
-            filename: "styles/[name].[contenthash:8].css",
-            chunkFilename: "styles/[name].[contenthash:8].css"
-        }),
-        new ProgressPlugin(),
-        new SVGSpriteLoaderPlugin({ plainSprite: true }),
-    ]
+  return [
+    new HtmlWebpackPlugin({
+      template: paths.html
+    }),
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "styles/[name].[contenthash:8].css",
+      chunkFilename: "styles/[name].[contenthash:8].css"
+    }),
+    new ProgressPlugin(),
+    new SVGSpriteLoaderPlugin({ plainSprite: true }),
+  ]
 }

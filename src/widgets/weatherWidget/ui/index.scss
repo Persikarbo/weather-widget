@@ -6,4 +6,12 @@
   background-color: var(--colorMineShaft);
   color: var(--colorWhite);
   padding: var(--weatherWidgetPadding);
+
+  &__header {
+    display: flex;
+  }
+
+  &__main {
+    display: flex;
+  }
 }

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { classNames } from "shared/lib";
+import { classNames, type Mods } from "shared/lib";
 
 interface BlockProps {
-  extraClasses?: object
+  extraClasses?: Mods
 }
 
 const props = withDefaults(defineProps<BlockProps>(), {});

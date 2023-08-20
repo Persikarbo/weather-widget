@@ -1,1 +1,0 @@
-export const openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?appid=3a6506649bf5f705f3c314b94277d4ff"
