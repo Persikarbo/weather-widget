@@ -6,7 +6,7 @@ export interface Weather {
 }
 
 interface Main {
-    temp: number | string,
+    temp?: number,
     feels_like?: number,
     pressure?: number,
     humidity?: number

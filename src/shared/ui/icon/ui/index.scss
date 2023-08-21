@@ -9,6 +9,10 @@
   height: var(--iconSize);
   color: var(--iconColor);
 
+  &.sizeXS {
+    --iconSize: 2rem;
+  }
+
   &.sizeM {
     --iconSize: 4rem;
   }
@@ -16,4 +20,13 @@
   &.sizeL {
     --iconSize: 5rem;
   }
+
+  &.sizeXL {
+    --iconSize: 6rem;
+  }
+
+  &.sizeXXL {
+    --iconSize: 7rem;
+  }
+
 }

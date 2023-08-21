@@ -2,20 +2,20 @@
 import { Icon } from "shared/ui";
 
 const props = defineProps({
-  city: String,
-  country: String
+  title: String,
+  idIcon: String
 })
+
+const emit = defineEmits([ "toggleSettings" ])
 </script>
 
 <template>
   <div class="weatherWidget__header">
-    <div class="weatherWidget__location">
-      {{ city && country
-        ? `${city}, ${country}`
-        : "Location not found" }}
+    <div class="weatherWidget__title">
+      {{ title }}
     </div>
-    <div class="weatherWidget__settings">
-      <Icon id="icon-settings" />
+    <div class="weatherWidget__toggle">
+      <Icon :id="idIcon" @click="emit('toggleSettings')"/>
     </div>
   </div>
 </template>

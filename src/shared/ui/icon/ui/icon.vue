@@ -1,13 +1,7 @@
 <script setup lang="ts">
-import { classNames, type Mods } from "shared/lib";
-import type { FunctionalComponent, SVGAttributes } from "vue";
+import { classNames } from "shared/lib";
+import type { IconProps } from "shared/ui/icon/config";
 import { IconSize } from "../config";
-
-interface IconProps extends FunctionalComponent<SVGAttributes> {
-  id: string | undefined,
-  size: IconSize,
-  extraClasses?: Mods
-}
 
 const props = withDefaults(defineProps<IconProps>(), {
   size: IconSize.S
@@ -26,10 +20,10 @@ const getIconUrl = (id: string | undefined): string | undefined => {
 
 <template>
   <svg :class="classNames('icon', extraClasses, [ size ])">
-    <use :href="getIconUrl(props.id)" />
+    <use :href="getIconUrl(id)" />
   </svg>
 </template>
 
-<style scoped>
+<style>
 @import "./index.scss";
 </style>

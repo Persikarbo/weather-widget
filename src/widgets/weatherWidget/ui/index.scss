@@ -1,7 +1,8 @@
 .weatherWidget {
+  --weatherWidgetWidth: 300px;
   --weatherWidgetPadding: 3rem;
 
-  width: fit-content;
+  width: var(--weatherWidgetWidth);
   border-radius: 1rem;
   background-color: var(--colorMineShaft);
   color: var(--colorWhite);
@@ -10,16 +11,25 @@
   flex-direction: column;
   gap: 2rem;
 
-  &__header {
+  ::v-deep(.weatherWidget__header) {
     display: flex;
     justify-content: space-between;
   }
 
-  &__main {
-    display: flex;
+  ::v-deep(.weatherWidget__toggle) {
+    cursor: pointer;
   }
 
-  &__details {
+  ::v-deep(.weatherWidget__main) {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    gap: 2rem;
+  }
+
+  ::v-deep(.weatherWidget__description),
+  ::v-deep(.weatherWidget__details) {
+    font-size: 1.75rem;
   }
 }

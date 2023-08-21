@@ -1,9 +1,8 @@
 export const defaultState = {
     weather: [],
-    main: {
-        temp: "—"
-    },
+    main: {},
     wind: {},
     clouds: {},
-    sys: {}
+    sys: {},
+    name: ""
 }

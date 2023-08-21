@@ -1,3 +1,13 @@
 .dataList {
+  gap: 2rem;
 
+  &, &__item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    gap: 0.5rem;
+    align-items: center;
+  }
 }

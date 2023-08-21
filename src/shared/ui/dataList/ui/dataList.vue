@@ -1,38 +1,23 @@
 <script setup lang="ts">
-import { isValidComponent, type Mods } from "shared/lib";
-import { type Component, type ComponentPropsOptions } from "vue";
+import { type Component } from "vue";
+import { type DataListProps } from "shared/ui/dataList/config";
+import { isTermComponent } from "../lib";
 
-interface DescComponent {
-  component: Component,
-  props?: any
-}
-
-interface DataListItem {
-  desc: string | DescComponent,
-  value: string | number | undefined,
-  unit: string
-}
-
-interface DataListProps {
-  items: DataListItem[],
-  extraClasses?: Mods
-}
-
-const props = withDefaults(defineProps<DataListProps>(), {});
+withDefaults(defineProps<DataListProps>(), {});
 </script>
 
 <template>
   <dl class="dataList">
-    <template v-for="{ desc, value, unit } in items">
+    <div class="dataList__item" v-for="{ term, value, unit } in items">
       <dt>
-        <component v-if="isValidComponent(desc.component)" :is="desc.component" v-bind="{ ...desc.props }"/>
-        <template v-else>{{ desc }}</template>
+        <component v-if="isTermComponent(term)" :is="term.component" v-bind="{ ...term.props }"/>
+        <template v-else>{{ term }}</template>
       </dt>
       <dd>{{ `${value} ${unit}` }}</dd>
-    </template>
+    </div>
   </dl>
 </template>
 
 <style scoped>
-
+@import "./index.scss";
 </style>
