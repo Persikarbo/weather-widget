@@ -4,7 +4,7 @@ import type { FunctionalComponent, SVGAttributes } from "vue";
 import { IconSize } from "../config";
 
 interface IconProps extends FunctionalComponent<SVGAttributes> {
-  id: string,
+  id: string | undefined,
   size: IconSize,
   extraClasses?: Mods
 }
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<IconProps>(), {
   size: IconSize.S
 });
 
-const getIconUrl = (id: string): string | undefined => {
+const getIconUrl = (id: string | undefined): string | undefined => {
   try {
     const { default: { url = "" } = {} } = require(`@assets/icons/${id}.svg`);
     return url;

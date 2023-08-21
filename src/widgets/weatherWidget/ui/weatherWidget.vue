@@ -7,6 +7,7 @@ import { Icon } from "shared/ui";
 import Header from "./header.vue";
 import { capitalizeFirstLetter } from "shared/lib";
 import Details from "widgets/weatherWidget/ui/details.vue";
+import DataList from "shared/ui/dataList/ui/dataList.vue";
 
 const weatherData = ref<OpenWeatherData>(defaultState);
 
@@ -60,7 +61,9 @@ const detailsItems = computed(() => [
       {{ weatherData.main.feels_like ? `Feels like ${weatherData.main.feels_like} °C.` : "" }}
       {{ descriptions && `${capitalizeFirstLetter(descriptions)}.` }}
     </div>
-    <Details :items="detailsItems"/>
+    <div class="weatherWidget__details">
+      <DataList :items="detailsItems"/>
+    </div>
   </div>
 </template>
 
