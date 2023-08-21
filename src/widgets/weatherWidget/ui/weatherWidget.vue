@@ -21,12 +21,18 @@ const descriptions = computed(() => getWeatherConcatenatedData(weatherData.value
 const mainIcon = computed(() => weatherData.value.weather[0]?.icon);
 const detailsItems = computed(() => [
   {
-    icon: "icon-direction",
+    desc: {
+      component: Icon,
+      props: { id: "icon-direction" }
+    },
     value: weatherData.value.wind.speed,
     unit: "m/s"
   },
   {
-    icon: "icon-humidity",
+    desc: {
+      component: Icon,
+      props: { id: "icon-humidity" }
+    },
     value: weatherData.value.main.humidity,
     unit: "%"
   },
