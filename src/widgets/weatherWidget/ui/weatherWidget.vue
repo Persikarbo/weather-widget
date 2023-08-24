@@ -2,8 +2,7 @@
 import { computed, onMounted, ref } from "vue";
 import { getOpenWeatherData } from "../api";
 import { defaultState, type OpenWeatherData } from "widgets/weatherWidget/config";
-import Info from "widgets/weatherWidget/ui/info.vue";
-import Header from "widgets/weatherWidget/ui/header.vue";
+import { Info, Header, Settings } from "./";
 
 const weatherData = ref<OpenWeatherData>(defaultState);
 const isSettingsOpen = ref<boolean>(false);
@@ -14,23 +13,34 @@ onMounted(() => {
   });
 })
 
+const headerProps = computed(() => ({
+  toggleBtnProps: {
+    icon: isSettingsOpen.value ? "icon-close" : "icon-settings"
+},
+  title: isSettingsOpen.value ? "Settings" : ""
+}))
+
 const onToggleSettings = () => isSettingsOpen.value = !isSettingsOpen.value;
 
 const location = computed(() => weatherData.value.name && weatherData.value.sys?.country
     ? `${weatherData.value.name}, ${weatherData.value.sys?.country}`
     : "Location not found")
+
+const onUpdateCities = () => {}
+
 </script>
 
 <template>
   <div class="weatherWidget">
-    <template v-if="isSettingsOpen" >
-      <Header title="Settings" id-icon="icon-close" @toggle-settings="onToggleSettings"/>
-      <div>Here must be settings</div>
-    </template>
-    <template v-else>
-      <Header :title="location" id-icon="icon-settings" @toggle-settings="onToggleSettings"/>
-      <Info v-bind="weatherData"/>
-    </template>
+    <Header v-bind="headerProps" @toggle-settings="onToggleSettings"/>
+    <div class="weatherWidget__content">
+      <template v-if="isSettingsOpen">
+        <Settings />
+      </template>
+      <template v-else>
+        <Info v-bind="weatherData"/>
+      </template>
+    </div>
   </div>
 </template>
 

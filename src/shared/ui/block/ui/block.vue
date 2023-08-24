@@ -2,14 +2,17 @@
 import { classNames, type Mods } from "shared/lib";
 
 interface BlockProps {
-  extraClasses?: Mods
+  mods?: Mods,
+  extraClasses: string[]
 }
 
-const props = withDefaults(defineProps<BlockProps>(), {});
+const props = withDefaults(defineProps<BlockProps>(), {
+  extraClasses: []
+});
 </script>
 
 <template>
-  <div :class="classNames('block', extraClasses)">
+  <div :class="classNames('block', mods, [ ...extraClasses ])">
     <slot />
   </div>
 </template>

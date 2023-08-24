@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Component } from "vue";
-import { type DataListProps } from "shared/ui/dataList/config";
 import { isTermComponent } from "../lib";
+import { type DataListProps } from "shared/ui/dataList";
 
 withDefaults(defineProps<DataListProps>(), {});
 </script>

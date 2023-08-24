@@ -1,26 +1,26 @@
-export interface Weather {
+export type Weather = {
     id?: number,
     main?: string,
     description?: string,
     icon?: string
 }
 
-interface Main {
+type Main = {
     temp?: number,
     feels_like?: number,
     pressure?: number,
     humidity?: number
 }
 
-interface Wind {
+type Wind = {
     speed?: number
 }
 
-interface Clouds {
+type Clouds = {
     all?: number
 }
 
-interface Sys {
+type Sys = {
     country?: string
 }
 
@@ -34,3 +34,12 @@ export interface OpenWeatherData {
     id?: number,
     name?: string
 }
+
+type City = {
+    id: string,
+    label: string
+}
+
+export interface SettingsProps {
+    cities: City[]
+};

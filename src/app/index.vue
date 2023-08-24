@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { PageLayout, Block } from "shared/ui";
+import { PageLayout } from "shared/ui/pageLayout";
+import { Block } from "shared/ui/block";
 import { WeatherWidget } from "widgets";
 </script>
 
 <template>
   <div class="app">
   <PageLayout>
-    <Block :extra-classes="{ isFullHeight: true, isContentCentered: true }">
+    <Block :mods="{ isFullHeight: true, isContentCentered: true }">
       <WeatherWidget />
     </Block>
   </PageLayout>

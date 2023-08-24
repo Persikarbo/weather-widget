@@ -1,7 +1,5 @@
-import type { OpenWeatherData, Weather } from "widgets/weatherWidget/config";
-import type { DataListItem, DataListTerm, DataListValue } from "shared/ui";
-import { Icon } from "shared/ui";
-import type { IconProps } from "shared/ui/icon/config";
+import type { DataListItem, DataListTerm, DataListValue } from "shared/ui/dataList";
+import { Icon, type IconProps } from "shared/ui/icon";
 
 export const getDetailsItem = (term: DataListTerm, value: DataListValue, unit: string): DataListItem<DataListTerm, DataListValue> => {
     return {

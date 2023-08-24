@@ -1,0 +1,22 @@
+@import "/src/app/styles/mixins";
+
+.draggableList {
+  @include reset-list;
+
+  &__item {
+    display: flex;
+    gap: 1rem;
+
+    @include nlc {
+      margin-bottom: 1.5rem;
+    }
+
+    &--isDragging {
+      opacity: 0.5;
+    }
+  }
+
+  &__icon {
+    cursor: move;
+  }
+}

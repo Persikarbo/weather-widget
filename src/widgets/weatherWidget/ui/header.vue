@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Icon } from "shared/ui";
+import { Btn } from "shared/ui/btn";
 
-const props = defineProps({
-  title: String,
-  idIcon: String
+defineProps({
+  toggleBtnProps: Btn,
+  title: String
 })
 
 const emit = defineEmits([ "toggleSettings" ])
@@ -15,7 +15,7 @@ const emit = defineEmits([ "toggleSettings" ])
       {{ title }}
     </div>
     <div class="weatherWidget__toggle">
-      <Icon :id="idIcon" @click="emit('toggleSettings')"/>
+      <Btn @click="emit('toggleSettings')" v-bind="toggleBtnProps"/>
     </div>
   </div>
 </template>

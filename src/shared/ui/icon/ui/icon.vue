@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { classNames } from "shared/lib";
-import type { IconProps } from "shared/ui/icon/config";
-import { IconSize } from "../config";
+import { type IconProps } from "shared/ui/icon";
 
-const props = withDefaults(defineProps<IconProps>(), {
-  size: IconSize.S
+withDefaults(defineProps<IconProps>(), {
+  size: "sizeS",
+  extraClasses: []
 });
 
 const getIconUrl = (id: string | undefined): string | undefined => {
@@ -19,7 +19,7 @@ const getIconUrl = (id: string | undefined): string | undefined => {
 </script>
 
 <template>
-  <svg :class="classNames('icon', extraClasses, [ size ])">
+  <svg :class="classNames('icon', mods, [ id, size, ...extraClasses ])">
     <use :href="getIconUrl(id)" />
   </svg>
 </template>

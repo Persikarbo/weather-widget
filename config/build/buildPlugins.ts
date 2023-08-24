@@ -19,6 +19,6 @@ module.exports = function buildPlugins({ paths }: BuildOptions): WebpackPluginIn
       chunkFilename: "styles/[name].[contenthash:8].css"
     }),
     new ProgressPlugin(),
-    new SVGSpriteLoaderPlugin({ plainSprite: true }),
+    new SVGSpriteLoaderPlugin({ plainSprite: true })
   ]
 }

@@ -1,17 +1,9 @@
-import type { SVGAttributes } from "vue/dist/vue";
 import type { Mods } from "shared/lib";
+import { IconSize } from "./constants";
 
-export enum IconSize {
-    XS = "sizeXS",
-    S = "sizeS",
-    M = "sizeM",
-    L = "sizeL",
-    XL = "sizeXL",
-    XXL = "sizeXXL",
-}
-
-export interface IconProps extends SVGAttributes {
+export interface IconProps {
     id: string | undefined,
-    size: IconSize,
-    extraClasses?: Mods
+    size?: IconSize,
+    mods?: Mods,
+    extraClasses?: string[]
 }

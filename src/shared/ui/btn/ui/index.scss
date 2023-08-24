@@ -1,0 +1,24 @@
+.btn {
+  --btnColor: currentColor;
+  --btnHoverColor: var(--colorCornflowerBlue);
+
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  max-height: 100%;
+  color: var(--btnColor);
+  transition: color .3s;
+
+  &:hover {
+    color: var(--btnHoverColor);
+  }
+
+  &__icon {
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+}

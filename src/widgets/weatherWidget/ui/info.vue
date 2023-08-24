@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, toRefs } from "vue";
-import Header from "./header.vue";
 import { capitalizeFirstLetter } from "shared/lib";
-import { DataList, Icon } from "shared/ui";
-import { IconSize } from "shared/ui/icon";
-import { getDetailsItem, getIconTerm, getVisibilityInKm, getWeatherConcatenatedData } from "../lib";
+import { DataList } from "shared/ui/dataList";
+import { Icon, IconSize } from "shared/ui/icon";
+import { getDetailsItem, getIconTerm, getVisibilityInKm } from "../lib";
 import type { OpenWeatherData } from "widgets/weatherWidget/config";
 
 const props = defineProps<OpenWeatherData>();

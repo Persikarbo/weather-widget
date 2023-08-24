@@ -7,17 +7,17 @@
   background-color: var(--colorMineShaft);
   color: var(--colorWhite);
   padding: var(--weatherWidgetPadding);
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
 
   ::v-deep(.weatherWidget__header) {
     display: flex;
     justify-content: space-between;
-  }
-
-  ::v-deep(.weatherWidget__toggle) {
-    cursor: pointer;
+    margin-bottom: 2rem;
   }
 
   ::v-deep(.weatherWidget__main) {
