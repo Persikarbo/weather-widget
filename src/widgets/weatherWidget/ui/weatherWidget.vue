@@ -1,33 +1,63 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { getOpenWeatherData } from "../api";
-import { defaultState, type OpenWeatherData } from "widgets/weatherWidget/config";
-import { Info, Header, Settings } from "./";
+import { type City, type WeatherData } from "widgets/weatherWidget/config";
+import { Header, Settings, WeatherCard } from "./";
+import { getInitialCity } from "../lib";
+import { Grid, Loader } from "shared/ui";
+import { localStorageCitiesKey } from "../config";
 
-const weatherData = ref<OpenWeatherData>(defaultState);
+const weatherData = ref<WeatherData[]>([]);
 const isSettingsOpen = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
+const cities = ref<City[]>([]);
+
+const setWeatherData = () => {
+  isLoading.value = true;
+  getOpenWeatherData(cities.value).then(({ data, unavailableCities }) => {
+    weatherData.value = data;
+
+    if (unavailableCities.length) {
+      console.error("Failed to load data for the following cities: ", unavailableCities.join(", "))
+    }
+  }).finally(() => isLoading.value = false)
+}
 
 onMounted(() => {
-  getOpenWeatherData({ lon: 51.5073219, lat: -0.1276474 }).then(res => {
-    weatherData.value = res;
-  });
+  const initialCities = JSON.parse(localStorage.getItem(localStorageCitiesKey));
+  if (initialCities?.length) {
+    cities.value = initialCities;
+    setWeatherData();
+  } else {
+    isLoading.value = true;
+    getInitialCity().then((res) => {
+      cities.value.push(res);
+      setWeatherData();
+    }, (err) => {
+      console.error(err)
+    })
+  }
 })
 
 const headerProps = computed(() => ({
   toggleBtnProps: {
     icon: isSettingsOpen.value ? "icon-close" : "icon-settings"
-},
+  },
   title: isSettingsOpen.value ? "Settings" : ""
 }))
 
-const onToggleSettings = () => isSettingsOpen.value = !isSettingsOpen.value;
+const onToggleSettings = async () => {
+  isSettingsOpen.value = !isSettingsOpen.value;
 
-const location = computed(() => weatherData.value.name && weatherData.value.sys?.country
-    ? `${weatherData.value.name}, ${weatherData.value.sys?.country}`
-    : "Location not found")
+  if (!isSettingsOpen.value) {
+    setWeatherData();
+  }
+}
 
-const onUpdateCities = () => {}
-
+const onUpdateCities = (e) => {
+  cities.value = e;
+  localStorage.setItem("cities", JSON.stringify(cities.value))
+}
 </script>
 
 <template>
@@ -35,10 +65,14 @@ const onUpdateCities = () => {}
     <Header v-bind="headerProps" @toggle-settings="onToggleSettings"/>
     <div class="weatherWidget__content">
       <template v-if="isSettingsOpen">
-        <Settings />
+        <Settings :cities="cities" @update-cities="onUpdateCities"/>
       </template>
+      <Loader v-else-if="isLoading" />
       <template v-else>
-        <Info v-bind="weatherData"/>
+        <Grid v-if="weatherData.length" columns="3">
+          <WeatherCard v-for="(item, index) in weatherData" :key="index" v-bind="item" />
+        </Grid>
+        <p v-else>No cities selected</p>
       </template>
     </div>
   </div>

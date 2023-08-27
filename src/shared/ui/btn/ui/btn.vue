@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<BtnProps>(), {
 </script>
 
 <template>
-  <button :class="classNames('btn', mods, [ ...extraClasses ])">
+  <button :class="classNames('btn', mods, extraClasses)">
     <span v-if="icon" class="btn__icon"><Icon :id="icon" :size="iconSize"/></span>
     <span v-if="label" class="btn__label">{{ label }}</span>
   </button>

@@ -1,9 +1,7 @@
-import type { Mods } from "shared/lib";
 import { IconSize } from "./constants";
+import type { ComponentProps } from "shared/types";
 
-export interface IconProps {
+export interface IconProps extends ComponentProps {
     id: string | undefined,
-    size?: IconSize,
-    mods?: Mods,
-    extraClasses?: string[]
+    size?: IconSize
 }

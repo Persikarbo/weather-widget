@@ -23,8 +23,8 @@ const onAddItem = (e, newItem) => {
 </script>
 
 <template>
-  <ul :class="classNames('dynamicList', mods, [ ...extraClasses ])">
-    <template v-for="item in items" v-bind:key="item.id">
+  <ul :class="classNames('dynamicList', mods, extraClasses)">
+    <template v-for="item in items" :key="item.id">
       <DynamicListItem :on-delete-item="onDeleteItem" v-bind="item"/>
     </template>
   </ul>

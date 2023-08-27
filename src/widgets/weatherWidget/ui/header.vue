@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Btn } from "shared/ui/btn";
+import { Btn } from "shared/ui";
 
 defineProps({
   toggleBtnProps: Btn,

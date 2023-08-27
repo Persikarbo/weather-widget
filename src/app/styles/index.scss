@@ -2,6 +2,8 @@
 @import "reset";
 @import "variables/globals";
 @import "variables/palette";
+@import "animations";
+@import "utils";
 
 html {
   font: var(--baseFont);

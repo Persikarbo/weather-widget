@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DynamicListItemProps } from "shared/ui/dynamicList/config/types";
-import { Icon, IconSize } from "shared/ui/icon";
+import { IconSize } from "shared/ui/icon";
 import { Btn } from "shared/ui/btn";
 
 withDefaults(defineProps<DynamicListItemProps>(), {

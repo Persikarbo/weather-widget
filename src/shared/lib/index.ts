@@ -1,5 +1,6 @@
 export * from "./classNames";
-export { getOpenWeatherApiUrl } from "./getOpenWeatherApiUrl";
+export { getOpenWeatherDataApiUrl } from "./getOpenWeatherDataApiUrl";
 export { makeRequest } from "./makeRequest";
 export { capitalizeFirstLetter } from "./capitalizeFirstLetter";
 export { isValidComponent } from "./isValidComponent";
+export { getOpenWeatherGeoApiUrl } from "./getOpenWeatherGeoApiUrl";

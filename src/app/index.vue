@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { PageLayout } from "shared/ui/pageLayout";
-import { Block } from "shared/ui/block";
-import { WeatherWidget } from "widgets";
+import { PageLayout, Block } from "shared/ui";
+import { WeatherWidget } from "widgets/weatherWidget";
 </script>
 
 <template>

@@ -6,14 +6,13 @@ interface requestCfg {
 }
 
 export async function makeRequest({ url, method = "GET", body = null, type = "json" }: requestCfg): Promise<any> {
-  return fetch(url, { method, body })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(new Error("Network error"));
-      }
-      return type === "json" ? res.json() : res.text();
-    })
-    .catch(error => {
-      console.error("Fetching failed:", error);
-    })
+  return new Promise((resolve, reject) => {
+      fetch(url, { method, body })
+          .then(res => {
+              if (!res.ok) {
+                  return reject(new Error("Network error"));
+              }
+              return resolve(type === "json" ? res.json() : res.text());
+          })
+  })
 }

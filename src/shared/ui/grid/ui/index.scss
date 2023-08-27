@@ -1,0 +1,24 @@
+@import "/src/app/styles/media";
+
+.grid {
+  --gridGapX: 3rem;
+  --gridGapY: 4rem;
+
+  display: grid;
+  width: 100%;
+  gap: var(--gridGapY) var(--gridGapX) ;
+
+  @for $i from 1 to 12 {
+    &--columns-#{$i} {
+      grid-template-columns: repeat($i, auto);
+    }
+  }
+
+  @include media-tablet {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  @include media-mobile {
+    grid-template-columns: repeat(1, auto);
+  }
+}

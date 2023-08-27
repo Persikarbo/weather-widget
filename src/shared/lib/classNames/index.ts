@@ -1,4 +1,4 @@
-export type Mods = Record<string, boolean | string>;
+import type { Mods } from "shared/types";
 
 export function classNames(baseClass: string, mods: Mods = {}, additional: string[] = []): string {
   return [

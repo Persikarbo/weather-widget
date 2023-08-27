@@ -1,6 +1,6 @@
-import type { Mods } from "shared/lib";
+import type { ComponentProps } from "shared/types";
 
-export interface DynamicListInputProps {
+export interface DynamicListInputProps extends ComponentProps{
     onAddItem: Function;
 }
 
@@ -11,8 +11,6 @@ export interface DynamicListItemProps {
     isCustomWrapper?: boolean;
 }
 
-export interface DynamicListProps {
-    items: DynamicListItemProps[],
-    mods?: Mods,
-    extraClasses?: string
+export interface DynamicListProps extends ComponentProps {
+    items: DynamicListItemProps[]
 }

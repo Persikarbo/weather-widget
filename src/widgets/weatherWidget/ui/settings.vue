@@ -1,27 +1,44 @@
 <script setup lang="ts">
-import { DraggableList } from "shared/ui/draggableList";
-import { DynamicListItem } from "shared/ui/dynamicList";
-import { ref } from "vue";
-import DynamicListInput from "shared/ui/dynamicList/ui/dynamicListInput.vue";
+import { DraggableList } from "shared/ui";
+import { DynamicListItem, DynamicListInput } from "shared/ui/dynamicList";
+import { toRef, watch } from "vue";
 import { nanoid } from "nanoid";
+import type { SettingsProps } from "widgets/weatherWidget/config";
+import { getCityData } from "../api";
 
-const items = ref([ { label: 'item1', id: 'item1' }, { label: 'item2', id: 'item2' }, { label: 'item3', id: 'item3' } ]);
+const props = withDefaults(defineProps<SettingsProps>(), {
+  cities: []
+})
 
-const onDeleteItem = (e, id) => {
-  items.value = items.value.filter(item => item.id !== id);
+const cities = toRef(props.cities);
+const emit = defineEmits([ "updateCities" ]);
+
+watch(cities.value, () => {
+  emit("updateCities", cities.value);
+})
+
+const onDeleteCity = (e, id) => {
+  const index = cities.value.findIndex(item => item.id === id);
+  if (index !== -1) {
+    cities.value.splice(index, 1);
+  }
 }
 
-const onAddItem = (e, newItem) => {
-  items.value.push({ id: nanoid(5), label: newItem })
+const onAddCity = async (e, cityName) => {
+  getCityData({ cityName }).then(({ lat, lon, country, name }) => {
+    cities.value.push({ id: nanoid(5), name, lat, lon, country });
+  }).catch((err) => {
+    console.error(err);
+  });
 }
 
 </script>
 
 <template>
-  <DraggableList :items="items" @update-order="items = $event">
+  <DraggableList :items="cities" @update-order="cities = $event">
     <template v-slot:item="{ item }" >
-      <DynamicListItem :on-delete-item="onDeleteItem" v-bind="item" />
+      <DynamicListItem :on-delete-item="onDeleteCity" :id="item.id" :label="item.name" />
     </template>
   </DraggableList>
-  <DynamicListInput :on-add-item="onAddItem" />
+  <DynamicListInput :on-add-item="onAddCity" :extra-classes="[ 'mtAuto' ]"/>
 </template>

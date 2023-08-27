@@ -16,7 +16,7 @@ module.exports = function buildLoaders({ isDev, paths }: BuildOptions): RuleSetR
 
   const babelLoader = {
     test: /\.(ts|js)x?$/,
-    use: "babel-loader",
+    loader: "babel-loader",
     exclude: /node_modules/,
   }
 

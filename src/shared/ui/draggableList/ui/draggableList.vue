@@ -38,9 +38,9 @@ const onDragOver = (e, currentIndex) => {
 </script>
 
 <template>
-  <ul :class="classNames('draggableList', mods, [ ...extraClasses ])">
+  <ul :class="classNames('draggableList', mods, extraClasses)">
     <li v-for="(item, index) in items"
-        v-bind:key="index"
+        :key="index"
         :class="classNames('draggableList__item', { isDragging: item.isDragging })" >
       <div class="draggableList__icon"
            draggable="true"

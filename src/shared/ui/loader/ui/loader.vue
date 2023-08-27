@@ -5,12 +5,11 @@ import type { ComponentProps } from "shared/types";
 const props = withDefaults(defineProps<ComponentProps>(), {
   extraClasses: []
 });
+
 </script>
 
 <template>
-  <div :class="classNames('block', mods, extraClasses)">
-    <slot />
-  </div>
+  <div :class="classNames('loader', mods, extraClasses)" />
 </template>
 
 <style scoped>

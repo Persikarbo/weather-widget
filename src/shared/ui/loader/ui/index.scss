@@ -1,0 +1,22 @@
+.loader {
+  --loaderCircleSize: 60px;
+  --loaderBorderWidth: 6px;
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:after {
+    content: " ";
+    display: block;
+    width: var(--loaderCircleSize);
+    height: var(--loaderCircleSize);
+    border-radius: 50%;
+    border: var(--loaderBorderWidth) solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: rotate 2s linear infinite;
+  }
+}

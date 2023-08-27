@@ -1,8 +1,11 @@
 .weatherWidget {
-  --weatherWidgetWidth: 300px;
+  --weatherWidgetCardWidth: 300px;
+  --weatherWidgetMaxWidth: 80vw;
   --weatherWidgetPadding: 3rem;
 
-  width: var(--weatherWidgetWidth);
+  width: auto;
+  max-width: var(--weatherWidgetMaxWidth);
+  min-width: var(--weatherWidgetCardWidth);
   border-radius: 1rem;
   background-color: var(--colorMineShaft);
   color: var(--colorWhite);
@@ -11,13 +14,22 @@
   &__content {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    min-height: 100px;
+  }
+
+  ::v-deep(.weatherWidget__card) {
+    width: var(--weatherWidgetCardWidth);
+    display: flex;
+    flex-direction: column;
     gap: 3rem;
   }
 
   ::v-deep(.weatherWidget__header) {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   ::v-deep(.weatherWidget__main) {

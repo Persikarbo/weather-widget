@@ -3,11 +3,11 @@
   flex-direction: column;
 
   &--isFullHeight {
-  height: 100%;
+    height: 100%;
   }
 
   &--isContentCentered {
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
   }
 }

@@ -9,5 +9,8 @@
   &__item {
     gap: 0.5rem;
     align-items: center;
+    background-color: var(--colorWhiteTr25);
+    padding: 0.5rem 1rem;
+    border-radius: 3rem;
   }
 }

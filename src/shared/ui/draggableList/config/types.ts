@@ -1,12 +1,10 @@
-import type { Mods } from "shared/lib";
+import type { ComponentProps } from "shared/types";
 
 export interface DraggableListItemProps {
     id?: string,
     label: string
 }
 
-export interface DraggableListProps {
-    items: DraggableListItemProps[],
-    mods?: Mods,
-    extraClasses?: string
+export interface DraggableListProps extends ComponentProps {
+    items: DraggableListItemProps[]
 }

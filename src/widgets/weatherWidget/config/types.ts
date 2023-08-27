@@ -1,45 +1,53 @@
 export type Weather = {
-    id?: number,
-    main?: string,
-    description?: string,
-    icon?: string
+    id?: number;
+    main?: string;
+    description?: string;
+    icon?: string;
 }
 
 type Main = {
-    temp?: number,
-    feels_like?: number,
-    pressure?: number,
-    humidity?: number
+    temp?: number;
+    feels_like?: number;
+    pressure?: number;
+    humidity?: number;
 }
 
 type Wind = {
-    speed?: number
+    speed?: number;
 }
 
 type Clouds = {
-    all?: number
+    all?: number;
 }
 
 type Sys = {
-    country?: string
+    country?: string;
+}
+
+export type WeatherData = {
+    weather: Weather[];
+    main: Main;
+    visibility?: number;
+    wind: Wind;
+    clouds: Clouds;
+    sys: Sys;
+    id?: number;
+    name?: string;
 }
 
 export interface OpenWeatherData {
-    weather: Weather[],
-    main: Main,
-    visibility?: number,
-    wind: Wind,
-    clouds: Clouds,
-    sys: Sys,
-    id?: number,
-    name?: string
+    data: WeatherData[],
+    unavailableCities: string[]
 }
 
-type City = {
-    id: string,
-    label: string
+export type City = {
+    id: string;
+    name: string;
+    lat?: number;
+    lot?: number;
+    country?: string;
 }
 
 export interface SettingsProps {
     cities: City[]
-};
+}
