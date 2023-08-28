@@ -23,7 +23,7 @@ module.exports = function buildWebpackConfig(options: BuildOptions): Configurati
       filename: "[name].[contenthash].bundle.js",
       path: paths.build,
       clean: true,
-      publicPath: "/"
+      publicPath: "./"
     },
     devtool: isDev ? "inline-source-map" : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
