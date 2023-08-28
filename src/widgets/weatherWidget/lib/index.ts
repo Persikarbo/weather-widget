@@ -1,5 +1,4 @@
 import type { DataListItem, DataListTerm, DataListValue } from "shared/ui/dataList/config/types";
-import Icon from "shared/ui/icon/ui/icon.vue";
 import type { City } from "widgets/weatherWidget/config";
 import { nanoid } from "nanoid";
 import { getCityData } from "widgets/weatherWidget/api";
@@ -9,12 +8,6 @@ export const getDetailsItem = (term: DataListTerm, value: DataListValue, unit: s
         term,
         value,
         unit
-    }
-}
-
-export const getIconTerm = (): DataListTerm => {
-    return {
-        component: Icon
     }
 }
 

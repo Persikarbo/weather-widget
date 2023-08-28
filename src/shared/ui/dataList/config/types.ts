@@ -1,12 +1,12 @@
-import { type Component } from "vue/dist/vue";
 import type { ComponentProps } from "shared/types";
+import { IconSize } from "shared/ui/icon";
 
-export type TermComponent = {
-    component: Component;
-    props?: object;
+export type DataListTerm = {
+    icon?: string;
+    iconSize?: IconSize;
+    label?: string;
 }
 
-export type DataListTerm = TermComponent | string;
 export type DataListValue = string | number | undefined;
 
 export interface DataListItem<T, V> {

@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from "shared/lib";
 import { DataList, Icon } from "shared/ui";
 import { IconSize } from "shared/ui/icon";
 import { defaultState } from "../config";
-import { getDetailsItem, getIconTerm, getVisibilityInKm } from "../lib";
+import { getDetailsItem, getVisibilityInKm } from "../lib";
 import type { WeatherData } from "widgets/weatherWidget/config/types";
 
 const props = withDefaults(defineProps<WeatherData>(), defaultState);
@@ -14,11 +14,11 @@ const { weather, main, wind, clouds, visibility, name, sys } = toRefs<WeatherDat
 const descriptions = computed(() => weather.value?.map(({ description }) => description).join(", "));
 const mainIcon = computed(() => weather.value[0]?.icon);
 const detailsItems = computed(() => [
-  getDetailsItem(getIconTerm({ id: "icon-direction", size: IconSize.XS }), wind.value.speed, "m/s"),
-  getDetailsItem(getIconTerm({ id: "icon-humidity", size: IconSize.XS }), main.value.humidity, "%"),
-  getDetailsItem("Atmospheric pressure: ", main.value.pressure, "hPa"),
-  getDetailsItem("Visibility: ", getVisibilityInKm(visibility?.value), "km"),
-  getDetailsItem("Cloudiness: ", clouds.value.all, "%")
+  getDetailsItem({ icon: "icon-direction", iconSize: IconSize.XS }, wind.value.speed, "m/s"),
+  getDetailsItem({ icon: "icon-humidity", iconSize: IconSize.XS }, main.value.humidity, "%"),
+  getDetailsItem({ label: "Atmospheric pressure: " }, main.value.pressure, "hPa"),
+  getDetailsItem({ label: "Visibility: " }, getVisibilityInKm(visibility?.value), "km"),
+  getDetailsItem({ label: "Cloudiness: " }, clouds.value.all, "%")
 ].filter(item => !!item.value))
 </script>
 

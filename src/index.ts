@@ -1,3 +1,5 @@
 import { app } from "app";
+import { requireAllSvgFiles } from "shared/lib";
 
-app.mount("#app")
+requireAllSvgFiles();
+app.mount("#app");

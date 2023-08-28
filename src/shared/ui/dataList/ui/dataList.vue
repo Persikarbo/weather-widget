@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { isTermComponent } from "../lib";
 import { type DataListProps } from "shared/ui/dataList";
 import { classNames } from "shared/lib";
+import { Icon } from "shared/ui";
 
 withDefaults(defineProps<DataListProps>(), {});
 </script>
@@ -14,13 +14,14 @@ withDefaults(defineProps<DataListProps>(), {});
       class="dataList__item"
     >
       <dt>
-        <component
-          :is="term.component"
-          v-if="isTermComponent(term)"
+        <Icon
+          v-if="term.icon"
+          :id="term.icon"
+          :size="term.iconSize"
         />
-        <template v-else>
-          {{ term }}
-        </template>
+        <span v-if="term.label">
+          {{ term.label }}
+        </span>
       </dt>
       <dd>{{ `${value} ${unit}` }}</dd>
     </div>
