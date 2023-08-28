@@ -3,7 +3,8 @@ import { isTermComponent } from "../lib";
 import { type DataListProps } from "shared/ui/dataList";
 import { classNames } from "shared/lib";
 
-withDefaults(defineProps<DataListProps>(), {});
+const props = withDefaults(defineProps<DataListProps>(), {});
+console.debug(props.items)
 </script>
 
 <template>
@@ -17,7 +18,6 @@ withDefaults(defineProps<DataListProps>(), {});
         <component
           :is="term.component"
           v-if="isTermComponent(term)"
-          v-bind="term.props"
         />
         <template v-else>
           {{ term }}

@@ -5,7 +5,8 @@ import { IconSize } from "shared/ui/icon/config/constants";
 
 const props = withDefaults(defineProps<IconProps>(), {
   size: IconSize.S,
-  extraClasses: () => []
+  extraClasses: () => [],
+  id: "icon-close"
 });
 
 const getIconUrl = (): string | undefined => {
@@ -21,7 +22,7 @@ const getIconUrl = (): string | undefined => {
 
 <template>
   <svg :class="classNames('icon', mods, [ id, size, ...extraClasses ])">
-    <use :href="getIconUrl" />
+    <use :href="getIconUrl()" />
   </svg>
 </template>
 
