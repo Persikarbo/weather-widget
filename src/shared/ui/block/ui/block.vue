@@ -2,8 +2,8 @@
 import { classNames } from "shared/lib";
 import type { ComponentProps } from "shared/types";
 
-const props = withDefaults(defineProps<ComponentProps>(), {
-  extraClasses: []
+withDefaults(defineProps<ComponentProps>(), {
+  extraClasses: () => []
 });
 </script>
 

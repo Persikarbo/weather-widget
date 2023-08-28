@@ -1,7 +1,6 @@
-import type { DataListItem, DataListTerm, DataListValue } from "shared/ui/dataList";
+import type { DataListItem, DataListTerm, DataListValue } from "shared/ui/dataList/config/types";
 import { Icon, type IconProps } from "shared/ui/icon";
 import type { City } from "widgets/weatherWidget/config";
-import { getOpenWeatherGeoApiUrl, makeRequest } from "shared/lib";
 import { nanoid } from "nanoid";
 import { getCityData } from "widgets/weatherWidget/api";
 
@@ -24,7 +23,7 @@ export const getVisibilityInKm = (visibility: number | undefined): number | unde
     return typeof visibility === "number" ? visibility / 1000 : undefined;
 }
 
-export const getInitialCity = async (): City => {
+export const getInitialCity = async (): Promise<City> => {
     return await new Promise((resolve, reject) => {
         if (!navigator?.geolocation) return reject("Unable to determine user's location");
 

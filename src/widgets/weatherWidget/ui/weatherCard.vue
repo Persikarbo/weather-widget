@@ -28,8 +28,14 @@ const detailsItems = computed(() => [
       {{ `${name}, ${sys.country}` }}
     </div>
     <div class="weatherWidget__main">
-      <div v-if="mainIcon" class="weatherWidget__icon">
-        <Icon :id="mainIcon" :size="IconSize.XXL" />
+      <div
+        v-if="mainIcon"
+        class="weatherWidget__icon"
+      >
+        <Icon
+          :id="mainIcon"
+          :size="IconSize.XXL"
+        />
       </div>
       <div class="weatherWidget__temp">
         {{ main.temp ? `${Math.round(main.temp)} °C` : "— °C" }}
@@ -39,8 +45,11 @@ const detailsItems = computed(() => [
       {{ main.feels_like ? `Feels like ${Math.round(main.feels_like)} °C.` : "" }}
       {{ descriptions && `${capitalizeFirstLetter(descriptions)}.` }}
     </div>
-    <div v-if="detailsItems.length" class="weatherWidget__details">
-      <DataList :items="detailsItems"/>
+    <div
+      v-if="detailsItems.length"
+      class="weatherWidget__details"
+    >
+      <DataList :items="detailsItems" />
     </div>
   </div>
 </template>

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { classNames } from "shared/lib";
-import { type IconProps } from "shared/ui/icon";
+import { type IconProps } from "shared/ui/icon/config/types";
+import { IconSize } from "shared/ui/icon/config/constants";
 
 withDefaults(defineProps<IconProps>(), {
-  size: "sizeS",
-  extraClasses: []
+  size: IconSize.S,
+  extraClasses: () => []
 });
 
-const getIconUrl = (id: string | undefined): string | undefined => {
+const getIconUrl = (id: string): string | undefined => {
   try {
     const { default: { url = "" } = {} } = require(`@assets/icons/${id}.svg`);
     return url;

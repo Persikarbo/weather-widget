@@ -62,17 +62,33 @@ const onUpdateCities = (e) => {
 
 <template>
   <div class="weatherWidget">
-    <Header v-bind="headerProps" @toggle-settings="onToggleSettings"/>
+    <Header
+      v-bind="headerProps"
+      @toggle-settings="onToggleSettings"
+    />
     <div class="weatherWidget__content">
       <template v-if="isSettingsOpen">
-        <Settings :cities="cities" @update-cities="onUpdateCities"/>
+        <Settings
+          :cities="cities"
+          @update-cities="onUpdateCities"
+        />
       </template>
       <Loader v-else-if="isLoading" />
       <template v-else>
-        <Grid v-if="weatherData.length" columns="3">
-          <WeatherCard v-for="(item, index) in weatherData" :key="index" v-bind="item" />
+        <Grid
+          v-if="weatherData.length"
+          columns="3"
+          :gap-x="weatherData.length < 2 ? '0' : null"
+        >
+          <WeatherCard
+            v-for="(item, index) in weatherData"
+            :key="index"
+            v-bind="item"
+          />
         </Grid>
-        <p v-else>No cities selected</p>
+        <p v-else>
+          No cities selected
+        </p>
       </template>
     </div>
   </div>

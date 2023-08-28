@@ -3,7 +3,7 @@ import { type BuildOptions } from "./types/config";
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = function buildLoaders({ isDev, paths }: BuildOptions): RuleSetRule[] {
+module.exports = function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
 
   const cssLoader = {
     test: /\.s?css$/i,

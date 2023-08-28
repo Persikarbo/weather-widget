@@ -1,5 +1,3 @@
-import { Mods } from "shared/lib";
-
 export interface OpenWeatherDataApiParams {
   lon: number;
   lat: number;
@@ -21,5 +19,5 @@ export interface OpenWeatherGeoApiParams {
 
 export interface ComponentProps {
   mods?: Mods;
-  extraClasses?: string[];
+  extraClasses?: Array<string>;
 }

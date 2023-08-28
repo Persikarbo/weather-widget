@@ -1,8 +1,8 @@
 <template>
   <div class="pageLayout">
-  <main class="pageLayout__main">
-    <slot />
-  </main>
+    <main class="pageLayout__main">
+      <slot />
+    </main>
   </div>
 </template>
 

@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<DynamicListInputProps>(), {
 
 const newItem = ref("");
 
-const onAddItem = (e) => {
+const onAddItem = (e: Event) => {
   if (typeof props.onAddItem === "function" && newItem.value) {
     props.onAddItem(e, newItem.value);
   }
@@ -21,8 +21,16 @@ const onAddItem = (e) => {
 
 <template>
   <div :class="classNames('dynamicList__input', mods, extraClasses)">
-    <input v-model="newItem" type="text" @keydown.enter="onAddItem"/>
-    <Btn icon="icon-add" :icon-size="IconSize.XS" @click="onAddItem"/>
+    <input
+      v-model="newItem"
+      type="text"
+      @keydown.enter="onAddItem"
+    >
+    <Btn
+      icon="icon-add"
+      :icon-size="IconSize.XS"
+      @click="onAddItem"
+    />
   </div>
 </template>
 

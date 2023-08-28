@@ -5,11 +5,11 @@ import { WeatherWidget } from "widgets/weatherWidget";
 
 <template>
   <div class="app">
-  <PageLayout>
-    <Block :mods="{ isFullHeight: true, isContentCentered: true }">
-      <WeatherWidget />
-    </Block>
-  </PageLayout>
+    <PageLayout>
+      <Block :mods="{ isFullHeight: true, isContentCentered: true }">
+        <WeatherWidget />
+      </Block>
+    </PageLayout>
   </div>
 </template>
 

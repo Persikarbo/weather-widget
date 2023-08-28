@@ -3,15 +3,17 @@ import { classNames } from "shared/lib";
 import type { GridProps } from "shared/ui/grid/config/types";
 
 const props = withDefaults(defineProps<GridProps>(), {
-  columns: 0,
-  rows: 0,
-  extraClasses: []
+  columns: null,
+  rows: null,
+  gapX: null,
+  extraClasses: () => []
 });
 
 const mods = {
   ...props.mods,
   [`columns-${props.columns}`]: !!props.columns,
-  [`rows-${props.rows}`]: !!props.rows
+  [`rows-${props.rows}`]: !!props.rows,
+  [`gapX-${props.gapX}`]: !!props.gapX
 }
 
 </script>

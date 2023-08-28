@@ -9,9 +9,16 @@ withDefaults(defineProps<DynamicListItemProps>(), {
 </script>
 
 <template>
-  <component :is="isCustomWrapper ? 'div' : 'li'" class="dynamicList__item">
+  <component
+    :is="isCustomWrapper ? 'div' : 'li'"
+    class="dynamicList__item"
+  >
     {{ label }}
-    <Btn icon="icon-remove" :icon-size="IconSize.XS" @click="(e) => onDeleteItem(e, id)" />
+    <Btn
+      icon="icon-remove"
+      :icon-size="IconSize.XS"
+      @click="(e: Event) => onDeleteItem(e, id)"
+    />
   </component>
 </template>
 

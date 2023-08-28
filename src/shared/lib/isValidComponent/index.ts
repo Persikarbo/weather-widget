@@ -1,1 +1,3 @@
-export const isValidComponent = (comp: any): boolean => comp && typeof comp.render === "function";
+import type { RendererElement } from "vue";
+
+export const isValidComponent = (comp: RendererElement): boolean => comp && typeof comp.render === "function";

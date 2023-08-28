@@ -1,13 +1,12 @@
 import { type Component } from "vue/dist/vue";
-import { type Mods } from "shared/lib";
 import type { ComponentProps } from "shared/types";
 
 export type TermComponent = {
     component: Component;
-    props?: any;
+    props?: object;
 }
 
-export type DataListTerm = string | TermComponent;
+export type DataListTerm = TermComponent & string;
 export type DataListValue = string | number | undefined;
 
 export interface DataListItem<T, V> {

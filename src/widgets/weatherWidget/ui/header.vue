@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import type { BtnProps } from "shared/ui/btn";
 import { Btn } from "shared/ui";
 
-defineProps({
-  toggleBtnProps: Btn,
-  title: String
+type weatherWidgetHeaderProps = {
+  toggleBtnProps: BtnProps;
+  title: string;
+}
+
+withDefaults(defineProps<weatherWidgetHeaderProps>(), {
+  title: ""
 })
 
 const emit = defineEmits([ "toggleSettings" ])
@@ -15,7 +20,10 @@ const emit = defineEmits([ "toggleSettings" ])
       {{ title }}
     </div>
     <div class="weatherWidget__toggle">
-      <Btn @click="emit('toggleSettings')" v-bind="toggleBtnProps"/>
+      <Btn
+        v-bind="toggleBtnProps"
+        @click="emit('toggleSettings')"
+      />
     </div>
   </div>
 </template>

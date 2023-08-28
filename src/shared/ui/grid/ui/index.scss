@@ -14,6 +14,10 @@
     }
   }
 
+  &--gapX-0 {
+    --gridGapX: 0;
+  }
+
   @include media-tablet {
     grid-template-columns: repeat(2, auto);
   }

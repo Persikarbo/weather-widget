@@ -1,11 +1,11 @@
 interface requestCfg {
   url: string,
   method?: string,
-  body?: any,
+  body?: object,
   type?: string
 }
 
-export async function makeRequest({ url, method = "GET", body = null, type = "json" }: requestCfg): Promise<any> {
+export async function makeRequest({ url, method = "GET", body = null, type = "json" }: requestCfg): Promise<object | string | Error> {
   return new Promise((resolve, reject) => {
       fetch(url, { method, body })
           .then(res => {
