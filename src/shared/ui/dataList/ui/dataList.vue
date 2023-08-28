@@ -19,7 +19,7 @@ withDefaults(defineProps<DataListProps>(), {
         <component
           :is="term.component"
           v-if="isTermComponent(term)"
-          v-bind="{ ...term.props }"
+          v-bind="term.props"
         />
         <template v-else>
           {{ term }}
