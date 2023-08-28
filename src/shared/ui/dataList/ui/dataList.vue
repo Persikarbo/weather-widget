@@ -3,8 +3,7 @@ import { isTermComponent } from "../lib";
 import { type DataListProps } from "shared/ui/dataList";
 import { classNames } from "shared/lib";
 
-const props = withDefaults(defineProps<DataListProps>(), {});
-console.debug(props.items)
+withDefaults(defineProps<DataListProps>(), {});
 </script>
 
 <template>
