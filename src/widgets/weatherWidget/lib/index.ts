@@ -1,5 +1,6 @@
 import type { DataListItem, DataListTerm, DataListValue } from "shared/ui/dataList/config/types";
-import { Icon, type IconProps } from "shared/ui/icon";
+import { Icon } from "shared/ui";
+import type { IconProps } from "shared/ui/icon";
 import type { City } from "widgets/weatherWidget/config";
 import { nanoid } from "nanoid";
 import { getCityData } from "widgets/weatherWidget/api";
