@@ -3,9 +3,7 @@ import { isTermComponent } from "../lib";
 import { type DataListProps } from "shared/ui/dataList";
 import { classNames } from "shared/lib";
 
-withDefaults(defineProps<DataListProps>(), {
-  extraClasses: () => []
-});
+withDefaults(defineProps<DataListProps>(), {});
 </script>
 
 <template>

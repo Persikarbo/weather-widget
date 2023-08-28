@@ -6,7 +6,7 @@ export type TermComponent = {
     props?: object;
 }
 
-export type DataListTerm = TermComponent & string;
+export type DataListTerm = TermComponent | string;
 export type DataListValue = string | number | undefined;
 
 export interface DataListItem<T, V> {
