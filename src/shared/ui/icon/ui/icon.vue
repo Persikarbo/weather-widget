@@ -3,17 +3,17 @@ import { classNames } from "shared/lib";
 import { type IconProps } from "shared/ui/icon/config/types";
 import { IconSize } from "shared/ui/icon/config/constants";
 
-withDefaults(defineProps<IconProps>(), {
+const props = withDefaults(defineProps<IconProps>(), {
   size: IconSize.S,
   extraClasses: () => []
 });
 
-const getIconUrl = (id: string | undefined): string | undefined => {
+const getIconUrl = (): string | undefined => {
   try {
-    const { default: { url = "" } = {} } = require(`@assets/icons/${id}.svg`);
+    const { default: { url = "" } = {} } = require(`@assets/icons/${props.id}.svg`);
     return url;
   } catch {
-    console.error(`Icon with identifier ${id} not found.`)
+    console.error(`Icon with identifier ${props.id} not found.`)
   }
 }
 
@@ -21,7 +21,7 @@ const getIconUrl = (id: string | undefined): string | undefined => {
 
 <template>
   <svg :class="classNames('icon', mods, [ id, size, ...extraClasses ])">
-    <use :href="getIconUrl(id)" />
+    <use :href="getIconUrl" />
   </svg>
 </template>
 
